@@ -11,7 +11,7 @@ feat: [JIRA-2296] Test commit message
 https://jira.example.com/browse/JIRA-2296
 ```
 
-For branch name, `best_change`, commit message will hve default values:
+For branch name, `best_change`, commit message will have default values:
 ```
 feat: [JIRA-0000] Add the best change
 ```
@@ -23,7 +23,7 @@ Copy this repo to the preffered location (for example ~/.git-template):
 git clone git@github.com:Nmishin/git-template.git ~/.git-template
 ```
 
-After that, you need to add a couple of lines to the global git config (usually ~/.gitconfig) for use with this repo:
+After that, you need to add a couple of lines to the global git config (`~/.gitconfig` or `~/.config/git/config`), exaple for macOS:
 ```
 [commit]
         template = /Users/username/.git-template/.gitmessage
