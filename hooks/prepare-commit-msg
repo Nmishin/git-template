@@ -1,0 +1,28 @@
+# gets digits in current branch name.
+# `head -1` gets just the first group.
+# Note that this assumes you are adding your git issue numbers to your branches.
+
+issueNumber=$(git symbolic-ref HEAD | grep -oE 'JIRA-\d+' | head -1)
+
+# found some types of MR
+issueType=$(git symbolic-ref HEAD | grep -oE 'feat|fix|docs' | head -1)
+
+# URL of our jira project
+jiraIssueURL="https:\/\/jira.example.com\/browse\/$issueNumber"
+
+if [ -n "$issueNumber" ]; then
+# replace #gitlabIssueURL with the value above
+    sed -i '' -e "s/\#jiraIssueURL/$jiraIssueURL/" "$1"
+    sed -i '' -e "s/\#issueNumber/$issueNumber/" "$1"
+
+else
+# delete the line containing #gitlabURL and set default issueNumber 
+    sed -i '' -e "/\#jiraIssueURL/d" "$1"
+    sed -i '' -e "s/\#issueNumber/JIRA-0000/" "$1"
+fi
+
+if [ -n "$issueType" ]; then
+    sed -i '' -e "s/\#issueType/$issueType/" "$1"
+else
+    sed -i '' -e "s/\#issueType/feat/" "$1"
+fi
