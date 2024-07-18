@@ -67,5 +67,5 @@ Only the interactive Git commit command `git commit` is supported.
 
 
 ## Links:
-[Git Smart: Streamlining Your Workflow with the prepare-commit-msg Hook](https://dev.to/chaz8080/git-smart-streamlining-your-workflow-with-the-prepare-commit-msg-hook-432p)
-[Automatically Add Issue URL to Commit Message](https://jasonmfry.wordpress.com/2019/11/13/automatically-add-issue-url-to-commit-message/)
+- [Git Smart: Streamlining Your Workflow with the prepare-commit-msg Hook](https://dev.to/chaz8080/git-smart-streamlining-your-workflow-with-the-prepare-commit-msg-hook-432p)
+- [Automatically Add Issue URL to Commit Message](https://jasonmfry.wordpress.com/2019/11/13/automatically-add-issue-url-to-commit-message/)
