@@ -23,13 +23,13 @@ Copy this repo to the preffered location (for example ~/.git-template):
 git clone git@github.com:Nmishin/git-template.git ~/.git-template
 ```
 
-After that, you need to add a couple of lines to the global git config (`~/.gitconfig` or `~/.config/git/config`), exaple for macOS:
+After that, you need to add a couple of lines to the global git config (`~/.gitconfig` or `~/.config/git/config`):
 ```
 [commit]
-        template = /Users/username/.git-template/.gitmessage
+        template = ~/.git-template/.gitmessage
 [init]
-        templateDir = /Users/username/.git-template
-        template = /Users/username/.git-template/.gitmessage
+        templateDir = ~/.git-template
+        template = ~/.git-template/.gitmessage
 ```
 
 For now, every newly cloned repo will be preconfigured with these templates.
@@ -42,6 +42,9 @@ set -ue
 
 # Set the path to the updated prepare-commit-msg script
 PREPARE_COMMIT_MSG_SCRIPT=$(git config --global init.templateDir)/hooks/prepare-commit-msg
+
+# We need to replace tilde (~) to the real HOME directory
+PREPARE_COMMIT_MSG_SCRIPT="${PREPARE_COMMIT_MSG_SCRIPT/#\~/$HOME}"
 
 # Find all Git repositories under the current directory
 repos=$(find . -name ".git" -type d -prune -exec dirname {} \;)
