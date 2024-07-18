@@ -6,7 +6,7 @@ If the parameters are not available, default parameters will be used.
 
 For example, for branch name `fix/JIRA-2296_cdn`, commit message will looks like:
 ```
-feat: [JIRA-2296] Test commit message
+fix: [JIRA-2296] Test commit message
 
 https://jira.example.com/browse/JIRA-2296
 ```
