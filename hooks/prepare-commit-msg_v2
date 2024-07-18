@@ -1,0 +1,33 @@
+COMMIT_MSG_FILE=$1
+
+# find issue number
+issueNumber=$(git symbolic-ref HEAD | grep -oE 'JIRA-\d+' | head -1)
+
+# find types of MR
+issueType=$(git symbolic-ref HEAD | grep -oE 'feat|fix|docs' | head -1)
+
+# set URL of our jira project
+jiraIssueURL="https://jira.example.com/browse/$issueNumber"
+
+# check the variables and set default values
+
+# if no issue number is found, set jiraIssueURL to empty
+if [ -z "$issueNumber" ]; then
+  jiraIssueURL=''
+fi
+
+# by default issue type should be 'feat' as the most common type
+issueType=${issueType:-feat}
+
+# set the issue number to 'JIRA-0000' to follow the commit message format if not found
+issueNumber=${issueNumber:-JIRA-0000}
+
+# form the commit message
+ 
+if [ -n "$issueNumber" ]; then
+    cat << EOF > "$COMMIT_MSG_FILE"
+$issueType: [$issueNumber] $(cat $COMMIT_MSG_FILE)
+
+$jiraIssueURL
+EOF
+fi
